@@ -2,7 +2,9 @@
 
 #Import packages
 from flask import *
-import sqlite3
+
+#Import local packages
+import dbHandler
 
 #Start flask app
 app = Flask(__name__)
@@ -26,4 +28,6 @@ def show_user(username):
     return "This is the group of: " + username
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    #Initailize the database
+    dbHandler.init("./database/")
+    app.run(debug=False, host="0.0.0.0")
