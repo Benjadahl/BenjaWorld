@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Log in | BenjaWorld</title>
+  </head>
+  <body>
+    <script src="{{ url_for('static', filename = 'FBlogin.js') }}"></script>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+  </body>
+</html>
