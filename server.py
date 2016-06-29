@@ -17,7 +17,9 @@ def showStart():
 #The town page, the game will automatically direct the page to your town when accesing this URL
 @app.route('/login/')
 def showLogin():
-    return render_template("login.html")
+    resp = make_response(render_template("login.html"))
+    resp.cache_control.no_cache = True
+    return resp
 
 #The town page, the game will automatically direct the page to your town when accesing this URL
 @app.route('/town/')
@@ -37,4 +39,4 @@ if __name__ == "__main__":
     dbHandler.init("./database/")
     dbHandler.newGroup("dankMemeMan")
     dbHandler.end()
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")

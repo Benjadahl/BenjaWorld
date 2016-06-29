@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>Log in | BenjaWorld</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename = 'domain.js') }}"></script>
   </head>
   <body>
     <script src="{{ url_for('static', filename = 'FBlogin.js') }}"></script>
+    <h5 id="statusMessage">Please log in with Facebook to continue playing BenjaWorld</h5>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
   </body>
