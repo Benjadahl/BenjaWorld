@@ -72,8 +72,8 @@ function LoginSucces() {
   FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
     console.log(response);
-    //authToken = response.
-    console.log(getDomain(window.location));
-    window.location = ("http://" + getDomain(window.location) + "/");
+    authToken = response.id;
+    document.cookie = "FBauthToken=" + authToken;
+    //window.location = ("http://" + getDomain(window.location) + "/");
   });
 }
