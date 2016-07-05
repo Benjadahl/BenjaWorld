@@ -12,7 +12,7 @@ app = Flask(__name__)
 #Default index page
 @app.route('/')
 def showStart():
-    return "Welcome to Benja World!"
+    return render_template("index.html")
 
 #The town page, the game will automatically direct the page to your town when accesing this URL
 @app.route('/login/')

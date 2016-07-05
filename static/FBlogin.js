@@ -12,11 +12,11 @@ function statusChangeCallback(response) {
     LoginSucces();
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
-
+    $("#statusMessage").html("Please authorize BenjaWorld with Facebook to continue playing.");
   } else {
     // The person is not logged into Facebook, so we're not sure if
     // they are logged into this app or not.
-
+    $("#statusMessage").html("Please log in with Facebook to continue playing BenjaWorld.");
   }
 }
 
@@ -73,7 +73,7 @@ function LoginSucces() {
     console.log('Successful login for: ' + response.name);
     console.log(response);
     authToken = response.id;
-    document.cookie = "FBauthToken=" + authToken;
-    //window.location = ("http://" + getDomain(window.location) + "/");
+    document.cookie = "FBauthToken=" + authToken + ";path=/"
+    window.location = ("http://" + getDomain(window.location) + "/");
   });
 }

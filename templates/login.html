@@ -8,7 +8,7 @@
   </head>
   <body>
     <script src="{{ url_for('static', filename = 'FBlogin.js') }}"></script>
-    <h5 id="statusMessage">Please log in with Facebook to continue playing BenjaWorld</h5>
+    <h4 id="statusMessage">Connecting to Facebook, please wait</h4>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
   </body>
