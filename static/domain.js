@@ -4,7 +4,7 @@ function getDomain (URL) {
   URL = URL.toString();
   for (var c in URL){
     if(domainMode && URL[c] === "/"){
-      domainMode === false;
+      domainMode = false;
       return domain;
     }
     if(domainMode){
