@@ -4,7 +4,7 @@
 from flask import *
 
 #Import local packages
-import dbHandler
+import dbHandler as db
 
 #Start flask app
 app = Flask(__name__)
@@ -38,15 +38,13 @@ def showUser(username):
 @app.route('/login/', methods=['POST'])
 def login():
     print("lel")
+    db.newGroup(request.json["userID"])
     print(request.json)
-    print(request.json["name"])
-    #print(username)
-    #dbHandler.newGroup(username)
     return "Login: "
 
 if __name__ == "__main__":
     #Initailize the database
-    dbHandler.init("./database/")
-    dbHandler.newGroup("dankMemeMan")
-    dbHandler.end()
+    db.init("./database/")
+    db.newGroup("dankMemeMan")
+    #db.end()
     app.run(debug=True, host="0.0.0.0")

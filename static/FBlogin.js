@@ -9,7 +9,7 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     $("#statusMessage").html("Thank you for loging in, now redirecting you.");
-    LoginSucces();
+    LoginSucces(response.authResponse);
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
     $("#statusMessage").html("Please authorize BenjaWorld with Facebook to continue playing.");
@@ -67,14 +67,9 @@ FB.getLoginStatus(function(response) {
 
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
-function LoginSucces() {
-  console.log("[FB] Fetching information");
-  FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
-    console.log(response);
-    authToken = response.id;
-    document.cookie = "FBauthToken=" + authToken + ";path=/"
-    ajaxRequest("login",response);
-    window.location = ("http://" + getDomain(window.location) + "/");
-  });
+function LoginSucces(authToken) {
+  console.log("[FB] Succesful login for user: " + authToken.userID);
+  document.cookie = "FBauthToken=" + authToken.accessToken + ";path=/"
+  ajaxRequest("login", authToken);
+  //window.location = ("http://" + getDomain(window.location) + "/");
 }
