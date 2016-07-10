@@ -74,6 +74,7 @@ function LoginSucces() {
     console.log(response);
     authToken = response.id;
     document.cookie = "FBauthToken=" + authToken + ";path=/"
+    ajaxRequest("login",response);
     window.location = ("http://" + getDomain(window.location) + "/");
   });
 }

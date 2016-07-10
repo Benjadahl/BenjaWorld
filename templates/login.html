@@ -5,9 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename = 'domain.js') }}"></script>
     <script src="{{ url_for('static', filename = 'cookieManager.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'ajax.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'FBlogin.js') }}"></script>
   </head>
   <body>
-    <script src="{{ url_for('static', filename = 'FBlogin.js') }}"></script>
     <h4 id="statusMessage">Connecting to Facebook, please wait</h4>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>

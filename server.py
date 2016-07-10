@@ -34,6 +34,16 @@ def showGroup():
 def showUser(username):
     return "This is the group of: " + username
 
+#Post requests
+@app.route('/login/', methods=['POST'])
+def login():
+    print("lel")
+    print(request.json)
+    print(request.json["name"])
+    #print(username)
+    #dbHandler.newGroup(username)
+    return "Login: "
+
 if __name__ == "__main__":
     #Initailize the database
     dbHandler.init("./database/")
