@@ -1,2 +1,3 @@
 #Ignores the compiled version of the python scripts
 /__pycache__
+/.tern-project
