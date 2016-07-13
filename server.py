@@ -38,13 +38,12 @@ def showUser(username):
 @app.route('/login/', methods=['POST'])
 def login():
     print("lel")
-    db.newGroup(request.json["userID"])
+    db.newGroup(str(request.json["userID"]))
     print(request.json)
     return "Login: "
 
 if __name__ == "__main__":
     #Initailize the database
     db.init("./database/")
-    db.newGroup("dankMemeMan")
     #db.end()
     app.run(debug=True, host="0.0.0.0")

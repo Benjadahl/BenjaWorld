@@ -3,14 +3,24 @@ import sqlite3
 
 def init(dbPath):
     print("[DB] Starting database")
-    global c
+    global path
+    path = dbPath
+    prepare("gamedata.db")
+    c.execute("CREATE TABLE IF NOT EXISTS groups (userID INTEGER, posX INTEGER DEFAULT 0, posY INTEGER DEFAULT 0)")
+    end()
+
+def prepare(dbName):
     global db
-    db = sqlite3.connect(dbPath + "/groups.db")
+    global c
+    db = sqlite3.connect(path + dbName)
     c = db.cursor()
 
 def newGroup(username):
     print("[DB] Creating new group")
-    c.execute("CREATE TABLE IF NOT EXISTS " + username + " (posX INTEGER, posY INTEGER)")
+    prepare("gamedata.db")
+    c.execute("INSERT INTO groups (userID) VALUES (" + username + ")")
+    db.commit()
+    db.close()
 
 def end():
     try:
